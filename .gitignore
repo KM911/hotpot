@@ -1,0 +1,26 @@
+# idea
+.idea
+.vscode
+
+# bin 
+*.bin
+*.exe
+*.class
+*.o
+*.out
+*.so
+*.log
+*.toml
+
+#image
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+
+node_modules
+dist
+out
+target
+build
