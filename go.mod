@@ -1,4 +1,4 @@
-module hotpot
+module github.com/KM911/hotpot
 
 go 1.18
 
