@@ -1,7 +1,7 @@
 package config
 
 const (
-	TomlFile = "github.com/KM911/hotpot.toml"
+	TomlFile = "hotpot.toml"
 )
 
 var (

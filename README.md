@@ -14,7 +14,7 @@ hotpot could help
 
 ## Install
 
-1. download the binary from github release
+1. download the binary from [github release](https://github.com/KM911/hotpot/releases)
 2. build from source . Need go 1.18
 3. go get ?
 
