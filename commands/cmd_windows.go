@@ -2,11 +2,12 @@ package commands
 
 import (
 	"fmt"
-	"hotpot/config"
 	"log"
 	"os"
 	"os/exec"
 	"strconv"
+
+	"github.com/KM911/hotpot/config"
 )
 
 func Start() error {

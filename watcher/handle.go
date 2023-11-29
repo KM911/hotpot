@@ -1,8 +1,9 @@
 package watcher
 
 import (
-	"hotpot/commands"
 	"path/filepath"
+
+	"github.com/KM911/hotpot/commands"
 
 	"github.com/fsnotify/fsnotify"
 )

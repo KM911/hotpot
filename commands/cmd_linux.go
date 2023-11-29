@@ -2,7 +2,7 @@ package commands
 
 import (
 	"fmt"
-	"hotpot/config"
+	"github.com/KM911/hotpot/config"
 	"log"
 	"os"
 	"os/exec"

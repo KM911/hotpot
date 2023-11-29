@@ -2,10 +2,11 @@ package watcher
 
 import (
 	"fmt"
-	"hotpot/config"
-	"hotpot/util"
+	"github.com/KM911/hotpot/util"
 	"log"
 	"time"
+
+	"github.com/KM911/hotpot/config"
 
 	"github.com/fsnotify/fsnotify"
 )

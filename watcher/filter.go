@@ -1,8 +1,9 @@
 package watcher
 
 import (
-	"hotpot/util"
 	"os"
+
+	"github.com/KM911/hotpot/util"
 )
 
 func Folders() []string {

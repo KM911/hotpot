@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"hotpot/util"
-	"hotpot/watcher"
+	"github.com/KM911/hotpot/util"
+	"github.com/KM911/hotpot/watcher"
 	"os"
 	"path/filepath"
 )

@@ -2,9 +2,10 @@ package watcher
 
 import (
 	"fmt"
-	"hotpot/commands"
-	"hotpot/config"
+	"github.com/KM911/hotpot/config"
 	"log"
+
+	"github.com/KM911/hotpot/commands"
 )
 
 func StartWatch() {
