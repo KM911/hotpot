@@ -2,13 +2,13 @@ hotpot  ♨️  let you eat hot tofu.
 
 Watch file change and execute command.
 
-中文文档
+[中文文档](https://github.com/KM911/hotpot/blob/main/README_zh-CN.md)
 
 ## Demo
 
 ### Restart Web Server
 
-hotpot could help 
+hotpot could help
 
 ![1701236594410](image/README/1701236594410.png)
 
@@ -18,9 +18,7 @@ hotpot could help
 2. build from source . Need go 1.18
 3. go get ?
 
-
 ## Configuration
-
 
 ```toml
 Delay = 2000
@@ -31,13 +29,9 @@ ShowEvent = false
 Github = 'https://github.com/KM911/hotpot'
 ```
 
-
-
-
 ## Acknowledgments
 
 This project uses the following projects, for which I am grateful. Without their open source contributions, this project would not have been possible.
-
 
 [GitHub - fsnotify/fsnotify: Cross-platform file system notifications for Go.](https://github.com/fsnotify/fsnotify)
 
