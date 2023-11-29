@@ -11,6 +11,7 @@ import (
 
 func Start() error {
 	cmd = exec.Command("bash", "-c", config.UserToml.Command) //nolint:gosec
+	if cmd == nil {
 		log.Fatal("cmd is nil")
 	}
 	cmd.Stdout = os.Stdout

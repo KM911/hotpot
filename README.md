@@ -16,7 +16,11 @@ hotpot could help
 
 1. download the binary from [github release](https://github.com/KM911/hotpot/releases)
 2. build from source . Need go 1.18
-3. go get ?
+3. go install
+
+```bash
+go install githuh.com/KM911/hotpot@latest
+```
 
 ## Configuration
 
