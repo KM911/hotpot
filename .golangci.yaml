@@ -1,0 +1,17 @@
+linters:
+#  enable-all: true
+  enable:
+    - unused
+    - gosimple
+    - dupl
+    - exhaustive
+    - gosec
+    - nilerr
+    - exportloopref
+    - errname
+    - asasalint
+    - asciicheck
+    - bodyclose
+    - contextcheck
+  disable:
+    - errcheck
