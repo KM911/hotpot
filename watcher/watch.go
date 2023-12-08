@@ -21,10 +21,10 @@ func StartWatch() {
 		select {
 		// this will ignore .sh file ? why
 		case event = <-watcher.Events:
+			if config.UserToml.ShowEvent {
+				fmt.Println("event:", event.Name, event.Op)
+			}
 			Debounce(func() {
-				if config.UserToml.ShowEvent {
-					fmt.Println("event:", event.Name, event.Op)
-				}
 				EventHandle(event)
 			})
 		case err, ok = <-watcher.Errors:
