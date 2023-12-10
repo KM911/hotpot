@@ -2,14 +2,17 @@ package main
 
 import (
 	"fmt"
-	"github.com/KM911/hotpot/util"
-	"github.com/KM911/hotpot/watcher"
+	"github.com/KM911/hotpot/format"
 	"os"
 	"path/filepath"
+
+	"github.com/KM911/hotpot/util"
+	"github.com/KM911/hotpot/watcher"
 )
 
 func init() {
-	util.FileLogger(filepath.Join(util.ProcessPath, "log.log"))
+
+	format.FileLogger(filepath.Join(util.ExecuteDirectory, "log.log"))
 }
 
 func HelpMessage() {}
@@ -18,7 +21,7 @@ func FileModified(filename string) {
 
 }
 func main() {
-	defer util.Recover(util.ErrorHandler)
+
 	lens := len(os.Args)
 	switch lens {
 	case 1:

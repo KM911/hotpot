@@ -1,32 +1,40 @@
 package watcher
 
 import (
-	"fmt"
-	"github.com/KM911/hotpot/config"
 	"log"
+	"strconv"
+	"strings"
 
 	"github.com/KM911/hotpot/commands"
+	"github.com/KM911/hotpot/config"
+	"github.com/KM911/hotpot/format"
 )
 
 func StartWatch() {
 	defer watcher.Close()
-	fmt.Println("Start Watch")
-	fmt.Print("Watch file type：")
-	for _, v := range config.UserToml.WatchFiles {
-		fmt.Print(v, " ")
-	}
-	fmt.Println("\nExecute command:", config.UserToml.Command)
+	//format.DrawBlock("watch file type", config.UserToml.WatchFiles)
+	//format.DrawBlock("ignores", config.UserToml.IgnoreFolders)
+	format.NoteMessage("Ignores", strings.Join(config.UserToml.IgnoreFolders, ","))
+	format.InfoMessage("File Type", strings.Join(config.UserToml.WatchFiles, ","))
+	format.NoteMessage("Command", config.UserToml.Command)
+	format.InfoMessage("Delay", strconv.Itoa(config.UserToml.Delay))
+
+	println("------------------------------------------")
+
 	commands.Start()
 	for {
 		select {
-		// this will ignore .sh file ? why
 		case event = <-watcher.Events:
 			if config.UserToml.ShowEvent {
-				fmt.Println("event:", event.Name, event.Op)
+				format.InfoMessage(event.Op.String(), event.Name)
 			}
-			Debounce(func() {
-				EventHandle(event)
-			})
+			if strings.Contains(event.Name, config.TomlFile) {
+				config.LoadToml()
+			} else {
+				Debounce(func() {
+					EventHandle(event)
+				})
+			}
 		case err, ok = <-watcher.Errors:
 			if !ok {
 				return
