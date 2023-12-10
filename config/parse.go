@@ -34,12 +34,11 @@ func CreateDefaultToml() {
 func LoadToml() {
 	if _, err := os.Stat(TomlFile); os.IsNotExist(err) {
 		CreateDefaultToml()
-		//UserToml = DefaultToml
 		fmt.Println("Configurations file created, please edit it and restart.")
+
 		os.Exit(0)
 	}
-
-	file, err := os.ReadFile(filepath.Join(util.CmdPath(), TomlFile))
+	file, err := os.ReadFile(filepath.Join(util.WorkingDirectory, TomlFile))
 	if err != nil {
 		panic(err)
 	}

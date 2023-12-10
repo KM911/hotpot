@@ -8,12 +8,12 @@ import (
 
 func Folders() []string {
 	var folders []string
-	files, _ := os.ReadDir(util.RootPath)
-	folders = append(folders, util.RootPath)
+	files, _ := os.ReadDir(util.WorkingDirectory)
+	folders = append(folders, util.WorkingDirectory)
 	for _, file := range files {
 		if file.IsDir() {
 			if _, ok = IgnoreFolders[file.Name()]; !ok {
-				folders = append(folders, util.RootPath+string(os.PathSeparator)+file.Name())
+				folders = append(folders, util.WorkingDirectory+string(os.PathSeparator)+file.Name())
 			}
 		}
 	}

@@ -10,12 +10,12 @@ import (
 
 func EventHandle(event fsnotify.Event) {
 	ext := filepath.Ext(event.Name)
-	// fmt.Println("change file extension is ", ext)
 	if ext == "" {
 		return
 	}
-	if _, watch := WatchFiles[ext[1:]]; watch {
+	if _, ok := WatchFiles[ext[1:]]; ok {
 		commands.Stop()
+		println("\033[H\033[2J")
 		commands.Start()
 	}
 }
