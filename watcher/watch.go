@@ -22,6 +22,8 @@ func StartWatch() {
 	println("------------------------------------------")
 
 	commands.Start()
+
+	//TODO : decrease the if
 	for {
 		select {
 		case event = <-watcher.Events:
@@ -30,6 +32,7 @@ func StartWatch() {
 			}
 			if strings.Contains(event.Name, config.TomlFile) {
 				config.LoadToml()
+				ProcessWatchEnvironment()
 			} else {
 				Debounce(func() {
 					EventHandle(event)

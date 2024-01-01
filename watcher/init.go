@@ -1,15 +1,12 @@
 package watcher
 
 import (
+	"github.com/KM911/hotpot/config"
 	"github.com/KM911/hotpot/format"
+	"github.com/KM911/hotpot/util"
+	"github.com/fsnotify/fsnotify"
 	"log"
 	"time"
-
-	"github.com/KM911/hotpot/util"
-
-	"github.com/KM911/hotpot/config"
-
-	"github.com/fsnotify/fsnotify"
 )
 
 var (
@@ -24,12 +21,15 @@ var (
 )
 
 func init() {
-	//执行的先后顺序是什么? 这里才是最关键的
+	ProcessWatchEnvironment()
+}
+func ProcessWatchEnvironment() {
+	WatchFiles = map[string]struct{}{}
+	IgnoreFolders = map[string]struct{}{}
 	util.SetAppend(WatchFiles, config.UserToml.WatchFiles)
 	util.SetAppend(IgnoreFolders, config.UserToml.IgnoreFolders)
 
 	Debounce = util.NewDebounce(time.Duration(config.UserToml.Delay) * time.Millisecond)
-
 	watcher, err = fsnotify.NewWatcher()
 	if err != nil {
 		log.Fatal(err)
@@ -45,6 +45,6 @@ func init() {
 			log.Fatal(err)
 		}
 	}
-	// util.DrawBlock("watch folder", watchFolder)
+
 	format.BlockMessage("watch folder", watchFolder)
 }
