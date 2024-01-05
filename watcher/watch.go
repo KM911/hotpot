@@ -18,11 +18,8 @@ func StartWatch() {
 	format.InfoMessage("File Type", strings.Join(config.UserToml.WatchFiles, ","))
 	format.NoteMessage("Command", config.UserToml.Command)
 	format.InfoMessage("Delay", strconv.Itoa(config.UserToml.Delay))
-
 	println("------------------------------------------")
-
 	commands.Start()
-
 	//TODO : decrease the if
 	for {
 		select {
