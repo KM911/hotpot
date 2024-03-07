@@ -1,8 +1,10 @@
 package watcher
 
 import (
-	"github.com/KM911/hotpot/config"
+	"fmt"
 	"path/filepath"
+
+	"github.com/KM911/hotpot/config"
 
 	"github.com/KM911/hotpot/commands"
 
@@ -28,6 +30,7 @@ var (
 
 func init() {
 	if len(config.UserToml.WatchFiles) == 1 && config.UserToml.WatchFiles[0] == "*" {
+		fmt.Println("listen any file change")
 		EventHandle = EventHandleAll
 	} else {
 		EventHandle = EventHandleWithFileExtension
