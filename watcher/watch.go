@@ -8,7 +8,7 @@ import (
 
 	"github.com/KM911/hotpot/commands"
 	"github.com/KM911/hotpot/config"
-	"github.com/KM911/hotpot/format"
+	"github.com/KM911/hotpot/lib/format"
 )
 
 func StartWatch() {

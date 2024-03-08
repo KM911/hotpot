@@ -1,12 +1,13 @@
 package watcher
 
 import (
-	"github.com/KM911/hotpot/config"
-	"github.com/KM911/hotpot/format"
-	"github.com/KM911/hotpot/util"
-	"github.com/fsnotify/fsnotify"
 	"log"
 	"time"
+
+	"github.com/KM911/hotpot/config"
+	"github.com/KM911/hotpot/lib/format"
+	"github.com/KM911/hotpot/lib/util"
+	"github.com/fsnotify/fsnotify"
 )
 
 var (

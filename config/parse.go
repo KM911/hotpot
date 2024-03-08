@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/KM911/hotpot/util"
+	"github.com/KM911/hotpot/lib/util"
 
 	"github.com/pelletier/go-toml/v2"
 )

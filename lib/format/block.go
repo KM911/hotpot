@@ -8,7 +8,7 @@ import (
 )
 
 // ╭───────╮
-// │ msg   │
+// │ _msg  │
 // ├───────┤
 // │ str   │
 // │ str   │
@@ -46,6 +46,7 @@ func MaxLength(s []string) int {
 	}
 	return currentMax
 }
+
 func BlockMessage(title string, content []string) {
 	//	1: find max length of content
 	maxLength := MaxLength(content) + 2

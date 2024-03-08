@@ -3,11 +3,11 @@ package commands
 import (
 	"log"
 	"os"
+	"os/exec"
 	"runtime"
 	"strconv"
 
-	"github.com/KM911/hotpot/format"
-	"github.com/KM911/hotpot/util"
+	"github.com/KM911/hotpot/lib/format"
 
 	"github.com/KM911/hotpot/config"
 )
@@ -17,10 +17,15 @@ var (
 	Count = 0
 )
 
+func CreateCommand(command string) *exec.Cmd {
+	return exec.Command("sh", "-c", command)
+
+}
+
 func Start() error {
 	Count++
 	format.InfoMessage("Execute times", strconv.Itoa(Count))
-	cmd = util.CreateCommand(config.UserToml.Command)
+	cmd = CreateCommand(config.UserToml.Command)
 	if cmd == nil {
 		log.Fatal("cmd is nil")
 	}
@@ -30,7 +35,7 @@ func Start() error {
 }
 
 func RunCommand(command string) error {
-	cmd = util.CreateCommand(command)
+	cmd = CreateCommand(command)
 	return cmd.Run()
 }
 

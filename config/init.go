@@ -6,8 +6,8 @@ const (
 
 var (
 	DefaultToml = Toml{
-		Delay:         2000,
-		Command:       "go build",
+		Delay:         500,
+		Command:       "go run main.go",
 		WatchFiles:    []string{"go"},
 		IgnoreFolders: []string{"node_modules", "vendor", ".git", ".idea", ".vscode", "log", "build", "dist", "bin", "public", "target", "output"},
 		ShowEvent:     false,

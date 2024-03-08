@@ -15,9 +15,9 @@ func TimerStart() *timer {
 	return &t
 }
 
-func (t *timer) End() {
+func (_t *timer) End() {
 	end := time.Now()
-	InfoMessage("Cost ", fmt.Sprint(end.Sub(t.start)))
+	InfoMessage("Cost ", fmt.Sprint(end.Sub(_t.start)))
 }
 
 func UnixTime() int64 {

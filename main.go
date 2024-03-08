@@ -7,10 +7,10 @@ import (
 	"strings"
 
 	"github.com/KM911/hotpot/config"
-	"github.com/KM911/hotpot/format"
+	"github.com/KM911/hotpot/lib/format"
 	"github.com/KM911/hotpot/watcher"
 
-	"github.com/KM911/hotpot/util"
+	"github.com/KM911/hotpot/lib/util"
 )
 
 var (

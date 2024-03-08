@@ -5,20 +5,21 @@ import (
 	"time"
 )
 
-func NewDebounce(interval time.Duration) func(f func()) {
+func NewDebounce(_interval time.Duration) func(f func()) {
 	var l sync.Mutex
 	var timer *time.Timer
+
 	return func(f func()) {
 		l.Lock()
 		defer l.Unlock()
 		if timer != nil {
 			timer.Stop()
 		}
-		timer = time.AfterFunc(interval, f)
+		timer = time.AfterFunc(_interval, f)
 	}
 }
 
-func NewThrottle(interval time.Duration) func(f func()) {
+func NewThrottle(_interval time.Duration) func(f func()) {
 	var l sync.Mutex
 	var timer *time.Timer
 
@@ -26,7 +27,7 @@ func NewThrottle(interval time.Duration) func(f func()) {
 		l.Lock()
 		defer l.Unlock()
 		if timer == nil {
-			timer = time.AfterFunc(interval, func() {
+			timer = time.AfterFunc(_interval, func() {
 				f()
 				timer = nil
 			})
