@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 
 	"github.com/gookit/color"
 )
@@ -20,6 +21,15 @@ func FileLogger(_src string) {
 	}
 	log.SetOutput(logFile)
 }
+
+func TempDefaultLogger() {
+	FileLogger(filepath.Join(os.TempDir(), "proxy.log"))
+}
+
+func TempLogger(_src string) {
+	FileLogger(filepath.Join(os.TempDir(), _src))
+}
+
 func Error(_msg string) {
 	ErrorMessage("Error", _msg)
 }

@@ -2,10 +2,12 @@ package watcher
 
 import (
 	"log"
+	"os/exec"
 	"time"
 
 	"github.com/KM911/hotpot/config"
 	"github.com/KM911/hotpot/lib/format"
+	"github.com/KM911/hotpot/lib/system"
 	"github.com/KM911/hotpot/lib/util"
 	"github.com/fsnotify/fsnotify"
 )
@@ -19,6 +21,7 @@ var (
 	ok       bool
 	Debounce func(func())
 	event    fsnotify.Event
+	cmd      *exec.Cmd
 )
 
 func init() {
@@ -30,7 +33,7 @@ func ProcessWatchEnvironment() {
 	util.SetAppend(WatchFiles, config.UserToml.WatchFiles)
 	util.SetAppend(IgnoreFolders, config.UserToml.IgnoreFolders)
 
-	Debounce = util.NewDebounce(time.Duration(config.UserToml.Delay) * time.Millisecond)
+	Debounce = system.NewDebounce(time.Duration(config.UserToml.Delay) * time.Millisecond)
 	watcher, err = fsnotify.NewWatcher()
 	if err != nil {
 		log.Fatal(err)

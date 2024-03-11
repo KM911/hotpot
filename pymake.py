@@ -93,7 +93,6 @@ def help():  # show all function
 
 
 def clean():
-    # TODO  windows without rm
     Load_Project_Env()
     ShowCommand("rm -rf "+project)
     ShowCommand("rm -rf *.exe")
@@ -151,6 +150,24 @@ def Go_Benchmark(package: str):
     print("\n".join(format_output))
 
 
+def GoReMod(file: str, project: str):
+    lines = open(file, "r", encoding="utf-8").readlines()
+    for i in range(len(lines)):
+        if lines[i].find("github.com/KM911") != -1:
+            # lines[i] = f"package {project}"
+            # "github.com/KM911/hotpot/lib/util"
+            items = lines[i].split("/")
+            # lines[i] = f'"{project}/{items[-1]}"'
+            # print(items)
+            items[2] = project
+            lines[i] = "/".join(items)
+            # print(lines[i])
+
+    # save file
+    with open(file, "w", encoding="utf-8") as f:
+        f.writelines(lines)
+
+
 def go_cli():
     commands_text = """
 
@@ -179,15 +196,12 @@ var (
     go_build()
 
 
+# must replace
+#  yes you are right
+
 def go_bench():  # go test -bench
     global argv
     Go_Benchmark("benchmark")
-    # if len(argv) == 0:
-    #     Go_Benchmark('benchmark')
-    # else:
-    #     for i in argv:
-    #         Go_Benchmark(i)
-# TODO profile
 
 
 def go_prof():
@@ -261,7 +275,7 @@ def FileContentReplaceRegex(_src, old_regex, new_s):
     file.close()
 
 
-def ReplaceGoImport(old, new):
+def ReplaceGoImport(project):
     files = os.listdir('.')
     # 文件处理
     # 以及文件夹处理
@@ -274,17 +288,17 @@ def ReplaceGoImport(old, new):
             _files = os.listdir('./'+file)
             for _file in _files:
                 if _file.endswith(".go"):
-                    # "github.com/KM911/old/xxx/abc" --> "github.com/KM911/new/xxx/abc"
-                    # TODO auto detecte ???? or just replace
-                    FileContentReplace(
-                        file+"/"+_file, "github.com/KM911/"+old, "github.com/KM911/" + new)
-                    print(file+"/" + _file)
+                    GoReMod(file+"/"+_file, project)
 
 
 def go_mod():
     # go: D:\GITHUB\KM911\template\p\gm\go.mod already exists
     Load_Project_Env()
     # 对main.go进行replace
+    ReplaceGoImport(project)
+
+    # GoReMod()
+
     GoProject = "github.com/"+Github_Username+"/"+project
 #     只有一个文件的修改是不足以偿还的
 # // 全都需要进行替换
@@ -304,9 +318,6 @@ def go_mod():
     Run("go mod tidy")
 
 
-# ReplaceGoImport("cli", "hotpot")
-
-
 def go_import():
     global argv
     print(argv)
@@ -314,6 +325,21 @@ def go_import():
         print("go_import old new")
     else:
         ReplaceGoImport(argv[0], argv[1])
+
+# TODO : create every template init ????
+
+
+def go_init():
+
+    go_mod()
+    main_text = """package main
+func main() {
+
+}
+"""
+    file = open("main.go", "w", encoding="utf-8")
+    file.write(main_text)
+    file.close()
 
 
 def go_hidegui():
@@ -422,7 +448,7 @@ def image_run():
 # main function
 # TODO add more typo
 ErrorDict = {"iamge": "image", "benhc": "bench",
-             "clnea": "clean", "dokcer": "docker", "dokecr": "docker"}
+             "clnea": "clean", "dokcer": "docker", "dokecr": "docker", "dcoker": "docker"}
 
 if __name__ == "__main__":
     global argv

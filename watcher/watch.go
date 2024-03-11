@@ -6,7 +6,6 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/KM911/hotpot/commands"
 	"github.com/KM911/hotpot/config"
 	"github.com/KM911/hotpot/lib/format"
 )
@@ -20,7 +19,7 @@ func StartWatch() {
 	format.NoteMessage("Command", config.UserToml.Command)
 	format.InfoMessage("Delay", strconv.Itoa(config.UserToml.Delay))
 	println("------------------------------------------")
-	commands.Start()
+	Start()
 	//TODO : decrease the if
 	for {
 		select {

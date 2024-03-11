@@ -1,4 +1,4 @@
-package commands
+package watcher
 
 import (
 	"log"
@@ -18,7 +18,7 @@ var (
 )
 
 func CreateCommand(command string) *exec.Cmd {
-	return exec.Command("sh", "-c", command)
+	return exec.Command("bash", "-c", command)
 
 }
 

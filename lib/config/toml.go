@@ -29,6 +29,17 @@ func CreateTomlConfig(_file string, _toml interface{}) {
 	}
 }
 
+func SaveTomlConfig(_file string, _toml interface{}) {
+	// os.WriteFile(_file, []byte(toml.Marshal(_toml)), 0777 )
+	f, err := os.OpenFile(_file, os.O_RDWR|os.O_CREATE, 0777)
+	defer f.Close()
+	if err != nil {
+		panic(err)
+	}
+	toml.NewEncoder(f).Encode(_toml)
+
+}
+
 func LoadTomlConfig(_file string, _toml interface{}) {
 	if _, err := os.Stat(_file); os.IsNotExist(err) {
 		CreateTomlConfig(_file, _toml)

@@ -3,7 +3,6 @@ module github.com/KM911/hotpot
 go 1.18
 
 require (
-	github.com/boljen/go-bitmap v0.0.0-20151001105940-23cd2fb0ce7d
 	github.com/fsnotify/fsnotify v1.7.0
 	github.com/gookit/color v1.5.4
 	github.com/pelletier/go-toml/v2 v2.1.0
