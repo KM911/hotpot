@@ -1,6 +1,7 @@
 package commands
 
 import (
+	"github.com/KM911/hotpot/config"
 	"github.com/urfave/cli/v2"
 )
 
@@ -15,5 +16,6 @@ var (
 
 func InitAction(c *cli.Context) error {
 	// show info
+	config.LoadToml()
 	return nil
 }

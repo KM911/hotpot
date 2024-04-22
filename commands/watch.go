@@ -1,6 +1,7 @@
 package commands
 
 import (
+	"github.com/KM911/hotpot/config"
 	"github.com/KM911/hotpot/watcher"
 	"github.com/urfave/cli/v2"
 )
@@ -15,6 +16,7 @@ var (
 )
 
 func WatchAction(c *cli.Context) error {
+	config.LoadToml()
 	watcher.StartWatch()
 	return nil
 }
