@@ -1,6 +1,8 @@
 package commands
 
 import (
+	"fmt"
+
 	"github.com/KM911/hotpot/config"
 	"github.com/KM911/hotpot/watcher"
 	"github.com/urfave/cli/v2"
@@ -17,6 +19,7 @@ var (
 
 func WatchAction(c *cli.Context) error {
 	config.LoadToml()
+	fmt.Println(config.UserToml)
 	watcher.StartWatch()
 	return nil
 }

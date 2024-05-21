@@ -27,6 +27,7 @@ var (
 //}
 
 func init() {
+
 	if len(config.UserToml.WatchFiles) == 1 && config.UserToml.WatchFiles[0] == "*" {
 		fmt.Println("listen any file change")
 		EventHandle = EventHandleAll
