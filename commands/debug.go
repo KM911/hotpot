@@ -2,9 +2,7 @@ package commands
 
 import (
 	"fmt"
-	"strings"
 
-	"github.com/KM911/hotpot/config"
 	"github.com/KM911/hotpot/watcher"
 	"github.com/urfave/cli/v2"
 )
@@ -19,7 +17,8 @@ var (
 )
 
 func DebugAction(c *cli.Context) error {
-	config.UserToml.Command = strings.Join(c.Args().Slice(), " ")
+	watcher.ProcessWatchEnvironment()
+
 	fmt.Println(c.Args().Slice())
 	watcher.WatchHook(nil)
 	return nil

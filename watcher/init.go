@@ -24,9 +24,6 @@ var (
 	cmd      *exec.Cmd
 )
 
-func init() {
-	ProcessWatchEnvironment()
-}
 func ProcessWatchEnvironment() {
 	WatchFiles = map[string]struct{}{}
 	IgnoreFolders = map[string]struct{}{}
@@ -51,4 +48,10 @@ func ProcessWatchEnvironment() {
 	}
 
 	format.BlockMessage("watch folder", watchFolder)
+
+	if len(config.UserToml.WatchFiles) == 1 && config.UserToml.WatchFiles[0] == "*" {
+		EventHandle = EventHandleAll
+	} else {
+		EventHandle = EventHandleWithFileExtension
+	}
 }

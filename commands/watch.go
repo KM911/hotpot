@@ -20,6 +20,7 @@ var (
 func WatchAction(c *cli.Context) error {
 	config.LoadToml()
 	fmt.Println(config.UserToml)
+	watcher.ProcessWatchEnvironment()
 	watcher.StartWatch()
 	return nil
 }

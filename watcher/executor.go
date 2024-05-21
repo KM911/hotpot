@@ -25,7 +25,8 @@ func CreateCommand(command string) *exec.Cmd {
 func Start() error {
 	Count++
 	format.InfoMessage("Execute times", strconv.Itoa(Count))
-	cmd = CreateCommand(config.UserToml.Command)
+	CreateCommand(config.UserToml.BuildCommand).Run()
+	cmd = CreateCommand(config.UserToml.ExecuteCommand)
 	if cmd == nil {
 		log.Fatal("cmd is nil")
 	}

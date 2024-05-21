@@ -16,7 +16,7 @@ func StartWatch() {
 
 	format.NoteMessage("Ignores", strings.Join(config.UserToml.IgnoreFolders, ","))
 	format.InfoMessage("File Type", strings.Join(config.UserToml.WatchFiles, ","))
-	format.NoteMessage("Command", config.UserToml.Command)
+	// format.NoteMessage("Command", config.UserToml.Command)
 	format.InfoMessage("Delay", strconv.Itoa(config.UserToml.Delay))
 	println("------------------------------------------")
 	Start()
@@ -50,7 +50,6 @@ func WatchHook(f func(event fsnotify.Event)) {
 
 	format.NoteMessage("Ignores", strings.Join(config.UserToml.IgnoreFolders, ","))
 	format.InfoMessage("File Type", strings.Join(config.UserToml.WatchFiles, ","))
-	format.NoteMessage("Command", config.UserToml.Command)
 	format.InfoMessage("Delay", strconv.Itoa(config.UserToml.Delay))
 	println("------------------------------------------")
 	Start()

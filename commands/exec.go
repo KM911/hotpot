@@ -19,7 +19,8 @@ var (
 )
 
 func ExecAction(c *cli.Context) error {
-	config.UserToml.Command = strings.Join(c.Args().Slice(), " ")
+	config.UserToml.ExecuteCommand = strings.Join(c.Args().Slice(), " ")
+	watcher.ProcessWatchEnvironment()
 	fmt.Println(c.Args().Slice())
 	watcher.StartWatch()
 	return nil

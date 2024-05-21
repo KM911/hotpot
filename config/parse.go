@@ -11,12 +11,13 @@ import (
 )
 
 type Toml struct {
-	Delay         int
-	Command       string
-	WatchFiles    []string
-	IgnoreFolders []string
-	ShowEvent     bool
-	Github        string
+	Delay          int
+	BuildCommand   string
+	ExecuteCommand string
+	WatchFiles     []string
+	IgnoreFolders  []string
+	ShowEvent      bool
+	Github         string
 }
 
 func CreateDefaultToml() {
