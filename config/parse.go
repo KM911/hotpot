@@ -12,7 +12,9 @@ import (
 
 type Toml struct {
 	Delay          int
-	BuildCommand   string
+	PrepareCommand []string
+	HookCommand    []string
+	Intervals      int
 	ExecuteCommand string
 	WatchFiles     []string
 	IgnoreFolders  []string

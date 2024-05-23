@@ -22,6 +22,7 @@ var (
 	Debounce func(func())
 	event    fsnotify.Event
 	cmd      *exec.Cmd
+	hookCmds = make(chan *exec.Cmd, 10)
 )
 
 func ProcessWatchEnvironment() {
