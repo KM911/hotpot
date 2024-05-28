@@ -9,5 +9,6 @@ var (
 		&Exec,
 		&Watch,
 		&Debug,
+		&Hook,
 	}
 )

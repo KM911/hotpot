@@ -1,7 +1,6 @@
 package watcher
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"os/exec"
@@ -16,6 +15,7 @@ import (
 
 var (
 	Stop  func() error
+	Start func() error
 	Count = 0
 )
 
@@ -23,20 +23,33 @@ func CreateCommand(command string) *exec.Cmd {
 	return exec.Command("bash", "-c", command)
 
 }
-
-func Start() error {
+func StartBindHook() error {
 	Count++
 	format.InfoMessage("Execute times", strconv.Itoa(Count))
-
-	// CreateCommand(config.UserToml.BuildCommand).Run()
+	for _, command := range config.UserToml.PrepareCommand {
+		RunCommand(command)
+	}
+	time.Sleep(time.Duration(config.UserToml.Delay) * time.Millisecond)
+	cmd = CreateCommand(config.UserToml.ExecuteCommand)
+	if cmd == nil {
+		log.Fatal("cmd is nil")
+	}
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	cmd.Start()
+	time.Sleep(time.Duration(config.UserToml.Intervals) * time.Millisecond)
+	SocketPing()
+	return nil
+}
+func StartWithHook() error {
+	Count++
+	format.InfoMessage("Execute times", strconv.Itoa(Count))
 	for _, command := range config.UserToml.PrepareCommand {
 		RunCommand(command)
 	}
 	StopHookCommand()
-	for _, command := range config.UserToml.HookCommand {
-		go RunHookCommand(command)
-	}
-	time.Sleep(time.Duration(config.UserToml.Delay))
+	go RunHookCommand(config.UserToml.HookCommand)
+	time.Sleep(time.Duration(config.UserToml.Intervals) * time.Millisecond)
 	cmd = CreateCommand(config.UserToml.ExecuteCommand)
 	if cmd == nil {
 		log.Fatal("cmd is nil")
@@ -49,7 +62,6 @@ func Start() error {
 func RunCommand(command string) error {
 	cmd = CreateCommand(command)
 	err := cmd.Run()
-	fmt.Println("RunCommand", err)
 	return err
 }
 func RunHookCommand(command string) error {
@@ -78,7 +90,7 @@ func taskkill() error {
 }
 
 func kill() error {
-	RunCommand("kill -9 " + strconv.Itoa(cmd.Process.Pid))
+	RunCommand("kill " + strconv.Itoa(cmd.Process.Pid))
 	return cmd.Process.Signal(os.Interrupt)
 }
 
@@ -87,5 +99,12 @@ func init() {
 		Stop = taskkill
 	} else {
 		Stop = kill
+	}
+
+	if config.UserToml.EnableHook {
+		Start = StartBindHook
+
+	} else {
+		Start = StartWithHook
 	}
 }

@@ -19,6 +19,9 @@ func StartWatch() {
 	// format.NoteMessage("Command", config.UserToml.Command)
 	format.InfoMessage("Delay", strconv.Itoa(config.UserToml.Delay))
 	println("------------------------------------------")
+	if config.UserToml.EnableHook {
+		ConnectSocket()
+	}
 	Start()
 	for {
 		select {

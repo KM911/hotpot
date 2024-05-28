@@ -56,3 +56,7 @@ func ProcessWatchEnvironment() {
 		EventHandle = EventHandleWithFileExtension
 	}
 }
+
+func init() {
+
+}

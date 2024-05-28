@@ -10,14 +10,19 @@ import (
 	"github.com/pelletier/go-toml/v2"
 )
 
+const (
+	HotpotSocketAddress = "/tmp/hotpot.sock"
+)
+
 type Toml struct {
 	Delay          int
 	PrepareCommand []string
-	HookCommand    []string
+	HookCommand    string
 	Intervals      int
 	ExecuteCommand string
 	WatchFiles     []string
 	IgnoreFolders  []string
+	EnableHook     bool
 	ShowEvent      bool
 	Github         string
 }

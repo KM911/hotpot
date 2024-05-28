@@ -8,6 +8,7 @@ import (
 
 var (
 	EventHandle func(event fsnotify.Event)
+	HookSocket  func()
 )
 
 func EventHandleWithFileExtension(event fsnotify.Event) {
