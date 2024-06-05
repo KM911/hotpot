@@ -8,6 +8,10 @@
 
 修复了因为init 加载在 toml 配置文件前导致 配置失效的bug
 
-2024-05-23 
+2024-05-28 
 
+add hook server for web develop 
 
+2024-06-5
+
+auto check hook enabled and support mutil hook server

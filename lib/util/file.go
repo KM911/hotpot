@@ -1,6 +1,8 @@
 package util
 
-import "os"
+import (
+	"os"
+)
 
 func ReadAll(_src string) string {
 	_data, err := os.ReadFile(_src)

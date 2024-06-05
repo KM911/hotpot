@@ -101,7 +101,7 @@ func init() {
 		Stop = kill
 	}
 
-	if config.UserToml.EnableHook {
+	if config.HookEnable {
 		Start = StartBindHook
 
 	} else {

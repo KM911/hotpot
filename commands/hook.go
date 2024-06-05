@@ -1,7 +1,6 @@
 package commands
 
 import (
-	"fmt"
 	"io"
 	"log"
 	"net"
@@ -53,11 +52,6 @@ func echoServer(conn net.Conn) {
 
 func HookAction(c *cli.Context) error {
 	config.LoadToml()
-
-	if !config.UserToml.EnableHook {
-		fmt.Println("Please Enable Hook in the configuration file")
-		return nil
-	}
 	watcher.ProcessWatchEnvironment()
 	os.RemoveAll(config.HotpotSocketAddress)
 	l, err := net.Listen("unix", config.HotpotSocketAddress)
@@ -73,7 +67,6 @@ func HookAction(c *cli.Context) error {
 		if err != nil {
 			log.Fatal("accept error:", err)
 		}
-
 		go echoServer(conn)
 	}
 	return nil

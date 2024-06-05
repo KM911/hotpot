@@ -3,6 +3,8 @@ package watcher
 import (
 	"log"
 	"os/exec"
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/KM911/hotpot/config"
@@ -55,8 +57,11 @@ func ProcessWatchEnvironment() {
 	} else {
 		EventHandle = EventHandleWithFileExtension
 	}
-}
 
-func init() {
+	format.NoteMessage("Ignores", strings.Join(config.UserToml.IgnoreFolders, ","))
+	format.InfoMessage("File Type", strings.Join(config.UserToml.WatchFiles, ","))
+	format.NoteMessage("Execute Command", config.UserToml.ExecuteCommand)
+	format.InfoMessage("Delay", strconv.Itoa(config.UserToml.Delay))
+	format.InfoMessage("ShowEvent", strconv.FormatBool(config.UserToml.ShowEvent))
 
 }

@@ -1,7 +1,6 @@
 package commands
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/KM911/hotpot/config"
@@ -19,9 +18,9 @@ var (
 )
 
 func ExecAction(c *cli.Context) error {
+	config.LoadToml()
 	config.UserToml.ExecuteCommand = strings.Join(c.Args().Slice(), " ")
 	watcher.ProcessWatchEnvironment()
-	fmt.Println(c.Args().Slice())
 	watcher.StartWatch()
 	return nil
 }

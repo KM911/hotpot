@@ -4,17 +4,22 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/KM911/hotpot/lib/util"
 
 	"github.com/pelletier/go-toml/v2"
 )
 
-const (
-	HotpotSocketAddress = "/tmp/hotpot.sock"
+var (
+	HotpotSocketAddress string
 )
 
-type Toml struct {
+func init() {
+	HotpotSocketAddress = filepath.Join(os.TempDir(), strings.ReplaceAll(util.WorkingDirectory, "/", "_")+"hotpot.sock")
+}
+
+type ConfigToml struct {
 	Delay          int
 	PrepareCommand []string
 	HookCommand    string
@@ -22,7 +27,6 @@ type Toml struct {
 	ExecuteCommand string
 	WatchFiles     []string
 	IgnoreFolders  []string
-	EnableHook     bool
 	ShowEvent      bool
 	Github         string
 }
@@ -43,10 +47,9 @@ func LoadToml() {
 	if _, err := os.Stat(TomlFile); os.IsNotExist(err) {
 		CreateDefaultToml()
 		fmt.Println("Configurations file created, please edit it and restart.")
-
 		os.Exit(0)
 	}
-	file, err := os.ReadFile(filepath.Join(util.WorkingDirectory, TomlFile))
+	file, err := os.ReadFile(TomlFile)
 	if err != nil {
 		panic(err)
 	}

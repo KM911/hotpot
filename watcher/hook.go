@@ -2,12 +2,14 @@ package watcher
 
 import (
 	"fmt"
-	"github.com/KM911/hotpot/config"
 	"net"
+
+	"github.com/KM911/hotpot/config"
 )
 
 var (
-	conn net.Conn
+	conn       net.Conn
+	SocketPing func()
 )
 
 func ConnectSocket() {
@@ -18,6 +20,8 @@ func ConnectSocket() {
 	fmt.Println("connect success")
 }
 
-func SocketPing() {
+func SocketPingAction() {
 	conn.Write([]byte("ping"))
 }
+
+func SocketPingEmpty() {}

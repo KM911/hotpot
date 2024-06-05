@@ -5,6 +5,5 @@ import (
 )
 
 func main() {
-	// app.Template()
 	app.NewApp("hotpot", "watch file change and execute command")
 }

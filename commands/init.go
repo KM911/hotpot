@@ -15,7 +15,6 @@ var (
 )
 
 func InitAction(c *cli.Context) error {
-	// show info
 	config.LoadToml()
 	return nil
 }
