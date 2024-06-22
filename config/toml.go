@@ -6,8 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/KM911/hotpot/lib/util"
-
+	"github.com/KM911/oslib/fs"
 	"github.com/pelletier/go-toml/v2"
 )
 
@@ -16,7 +15,7 @@ var (
 )
 
 func init() {
-	HotpotSocketAddress = filepath.Join(os.TempDir(), strings.ReplaceAll(util.WorkingDirectory, "/", "_")+"hotpot.sock")
+	HotpotSocketAddress = filepath.Join(os.TempDir(), strings.ReplaceAll(fs.WorkingDirectory, "/", "_")+"hotpot.sock")
 }
 
 type ConfigToml struct {

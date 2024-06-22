@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/KM911/hotpot/config"
-	"github.com/KM911/hotpot/lib/format"
+	"github.com/KM911/oslib/format"
 )
 
 func StartWatch() {

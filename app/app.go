@@ -11,8 +11,8 @@ import (
 
 var ()
 
-func Template() {
-	app := &cli.App{
+func NewCliApp() *cli.App {
+	return &cli.App{
 		// TODO set basic info for app
 		Name:     "hotpot",
 		Usage:    "Create hard link for project",
@@ -30,27 +30,19 @@ func Template() {
 		Suggest:  true,
 		HideHelp: true,
 	}
+}
 
+func Template() {
+	app := NewCliApp()
 	if err := app.Run(os.Args); err != nil {
 		log.Fatal(err)
 	}
 }
 
 func NewApp(_name, _usage string) {
-	app := &cli.App{
-		Name:     _name,
-		Usage:    _usage,
-		Commands: commands.Subcommands,
-		Action: func(_cli_context *cli.Context) error {
-			cli.ShowAppHelpAndExit(_cli_context, 0)
-			return nil
-		},
-		// Authors: ,
-
-		Suggest:  true,
-		HideHelp: true,
-	}
-
+	app := NewCliApp()
+	app.Name = _name
+	app.Usage = _usage
 	if err := app.Run(os.Args); err != nil {
 		log.Fatal(err)
 	}

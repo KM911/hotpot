@@ -8,9 +8,9 @@ import (
 	"time"
 
 	"github.com/KM911/hotpot/config"
-	"github.com/KM911/hotpot/lib/format"
-	"github.com/KM911/hotpot/lib/system"
-	"github.com/KM911/hotpot/lib/util"
+	"github.com/KM911/oslib/adt"
+	"github.com/KM911/oslib/format"
+	"github.com/KM911/oslib/system"
 	"github.com/fsnotify/fsnotify"
 )
 
@@ -30,8 +30,8 @@ var (
 func ProcessWatchEnvironment() {
 	WatchFiles = map[string]struct{}{}
 	IgnoreFolders = map[string]struct{}{}
-	util.SetAppend(WatchFiles, config.UserToml.WatchFiles)
-	util.SetAppend(IgnoreFolders, config.UserToml.IgnoreFolders)
+	adt.SetAppend(WatchFiles, config.UserToml.WatchFiles)
+	adt.SetAppend(IgnoreFolders, config.UserToml.IgnoreFolders)
 
 	Debounce = system.NewDebounce(time.Duration(config.UserToml.Delay) * time.Millisecond)
 	watcher, err = fsnotify.NewWatcher()

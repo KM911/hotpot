@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/KM911/hotpot/lib/format"
+	"github.com/KM911/oslib/format"
 
 	"github.com/KM911/hotpot/config"
 )

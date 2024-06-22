@@ -4,7 +4,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/KM911/hotpot/lib/util"
+	"github.com/KM911/oslib/fs"
 )
 
 var (
@@ -33,5 +33,5 @@ func init() {
 	if _, err := os.Stat(HotpotSocketAddress); err == nil {
 		HookEnable = true
 	}
-	TomlFile = filepath.Join(util.WorkingDirectory, "hotpot.toml")
+	TomlFile = filepath.Join(fs.WorkingDirectory, "hotpot.toml")
 }
