@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/KM911/oslib/fs"
+	"github.com/KM911/fish/fs"
 	"github.com/pelletier/go-toml/v2"
 )
 

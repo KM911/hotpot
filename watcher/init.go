@@ -7,10 +7,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/KM911/fish/adt"
+	"github.com/KM911/fish/format"
+	"github.com/KM911/fish/system"
 	"github.com/KM911/hotpot/config"
-	"github.com/KM911/oslib/adt"
-	"github.com/KM911/oslib/format"
-	"github.com/KM911/oslib/system"
 	"github.com/fsnotify/fsnotify"
 )
 

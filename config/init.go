@@ -4,7 +4,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/KM911/oslib/fs"
+	"github.com/KM911/fish/fs"
 )
 
 var (
@@ -15,20 +15,19 @@ var (
 	HookEnable  = false
 	DefaultToml = ConfigToml{
 		Delay:          500,
-		PrepareCommand: []string{"go mod tidy", "go build -o bin"}, // block and execute one by one
-		HookCommand:    "",                                         // not block and execute
+		PrepareCommand: []string{"go mod tidy"}, // block and execute one by one
+		HookCommand:    "",                      // not block and execute
 		Intervals:      0,
-		ExecuteCommand: "./bin",
+		ExecuteCommand: "go run main.go",
 		WatchFiles:     []string{"go"},
 		IgnoreFolders:  []string{"node_modules", "vendor", ".git", ".idea", ".vscode", "log", "build", "dist", "bin", "public", "target", "output"},
 		ShowEvent:      true,
 		Github:         "https://github.com/KM911/hotpot",
 	}
-	UserToml = ConfigToml{}
+	UserToml = DefaultToml
 )
 
 func init() {
-	UserToml = DefaultToml
 	// check /tmp/hotpot.sock
 	if _, err := os.Stat(HotpotSocketAddress); err == nil {
 		HookEnable = true

@@ -4,8 +4,6 @@ import (
 	"log"
 	"os"
 
-	"github.com/KM911/hotpot/commands"
-
 	"github.com/urfave/cli/v2"
 )
 
@@ -16,7 +14,7 @@ func NewCliApp() *cli.App {
 		// TODO set basic info for app
 		Name:     "hotpot",
 		Usage:    "Create hard link for project",
-		Commands: commands.Subcommands,
+		Commands: commands,
 		Action: func(_cli_context *cli.Context) error {
 			cli.ShowAppHelpAndExit(_cli_context, 0)
 			return nil

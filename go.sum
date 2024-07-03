@@ -1,5 +1,9 @@
-github.com/KM911/oslib v0.0.29 h1:HASCbAErJ/+pND18uNhBU5qEEqOBy9Wyz9utoa49cNk=
-github.com/KM911/oslib v0.0.29/go.mod h1:4LTDMW77BcUeKsPQsBbDq62MaQKwkYxFBuzM34K31ik=
+github.com/KM911/fish v0.0.0-20240625082326-31bdc85734d8 h1:Prdbbr8Y2Ha0t52t9F6Dx5ylNK51EkWAhAmH9TSoY0U=
+github.com/KM911/fish v0.0.0-20240625082326-31bdc85734d8/go.mod h1:WsNYWNq7e2qsoLVo7kDVE4fnWRRjWnI2iD0rsCFSJwg=
+github.com/RoaringBitmap/roaring/v2 v2.2.2 h1:Y9eLWVsCqzIi90jZHCLcHfl4dW3eaIJOPnYpxt9W5mo=
+github.com/RoaringBitmap/roaring/v2 v2.2.2/go.mod h1:qhgqItwt5rQY0Nj4zw9nMhXv4Pkq2D8dA8RPJAfyU08=
+github.com/bits-and-blooms/bitset v1.12.0 h1:U/q1fAF7xXRhFCrhROzIfffYnu+dlS38vCZtmFVPHmA=
+github.com/bits-and-blooms/bitset v1.12.0/go.mod h1:7hO7Gc7Pp1vODcmWvKMRA9BNmbv6a/7QIWpPxHddWR8=
 github.com/cpuguy83/go-md2man/v2 v2.0.4 h1:wfIWP927BUkWJb2NmU/kNDYIBTh/ziUX91+lVfRxZq4=
 github.com/cpuguy83/go-md2man/v2 v2.0.4/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -9,6 +13,8 @@ github.com/fsnotify/fsnotify v1.7.0 h1:8JEhPFa5W2WU7YfeZzPNqzMP6Lwt7L2715Ggo0nos
 github.com/fsnotify/fsnotify v1.7.0/go.mod h1:40Bi/Hjc2AVfZrqy+aj+yEI+/bRxZnMJyTJwOpGvigM=
 github.com/gookit/color v1.5.4 h1:FZmqs7XOyGgCAxmWyPslpiok1k05wmY3SJTytgvYFs0=
 github.com/gookit/color v1.5.4/go.mod h1:pZJOeOS8DM43rXbp4AZo1n9zCU2qjpcRko0b6/QJi9w=
+github.com/mschoch/smat v0.2.0 h1:8imxQsjDm8yFEAVBe7azKmKSgzSkZXDuKkSq9374khM=
+github.com/mschoch/smat v0.2.0/go.mod h1:kc9mz7DoBKqDyiRL7VZN8KvXQMWeTaVnttLRXOlotKw=
 github.com/pelletier/go-toml/v2 v2.2.2 h1:aYUidT7k73Pcl9nb2gScu7NSrKCSHIDE89b3+6Wq+LM=
 github.com/pelletier/go-toml/v2 v2.2.2/go.mod h1:1t835xjRzz80PqgE6HHgN2JOsmgYu/h4qDAS4n929Rs=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=

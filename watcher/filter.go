@@ -3,7 +3,7 @@ package watcher
 import (
 	"os"
 
-	"github.com/KM911/oslib/fs"
+	"github.com/KM911/fish/fs"
 )
 
 func Folders() []string {

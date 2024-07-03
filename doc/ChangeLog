@@ -19,4 +19,4 @@ auto check hook enabled and support mutil hook server
 
 2024-6-22 
 
-remove lib, use oslib
+remove lib, use fish
