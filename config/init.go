@@ -12,7 +12,7 @@ var (
 )
 
 var (
-	HookEnable  = false
+	HookEnable  = true
 	DefaultToml = ConfigToml{
 		Delay:          500,
 		PrepareCommand: []string{"go mod tidy"}, // block and execute one by one

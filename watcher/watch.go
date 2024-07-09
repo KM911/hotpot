@@ -11,8 +11,9 @@ import (
 func StartWatch() {
 	defer watcher.Close()
 	if config.HookEnable {
-		ConnectSocket()
-		SocketPing = SocketPingAction
+		// ConnectSocket()
+		// SocketPing = SocketPingAction
+		SocketPing = TempHookNotify
 	} else {
 		SocketPing = SocketPingEmpty
 	}
