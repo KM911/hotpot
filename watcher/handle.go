@@ -18,13 +18,16 @@ func EventHandleWithFileExtension(event fsnotify.Event) {
 	}
 	if _, ok := WatchFiles[ext[1:]]; ok {
 		Stop()
-		println("\033[H\033[2J")
+		Clear()
 		Start()
 	}
 }
 
 func EventHandleAll(event fsnotify.Event) {
 	Stop()
-	println("\033[H\033[2J")
+	Clear()
 	Start()
+}
+func Clear() {
+	println("\033[H\033[2J")
 }

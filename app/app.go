@@ -20,7 +20,7 @@ func NewCliApp() *cli.App {
 			return nil
 		},
 		Authors: []*cli.Author{
-			&cli.Author{
+			{
 				Name:  "KM911",
 				Email: "2547715095@qq.com",
 			},

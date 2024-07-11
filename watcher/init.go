@@ -2,13 +2,13 @@ package watcher
 
 import (
 	"log"
+	"os"
 	"os/exec"
-	"strconv"
-	"strings"
 	"time"
 
 	"github.com/KM911/fish/adt"
 	"github.com/KM911/fish/format"
+	"github.com/KM911/fish/fs"
 	"github.com/KM911/fish/system"
 	"github.com/KM911/hotpot/config"
 	"github.com/fsnotify/fsnotify"
@@ -27,9 +27,11 @@ var (
 	hookCmds = make(chan *exec.Cmd, 10)
 )
 
-func ProcessWatchEnvironment() {
-	WatchFiles = map[string]struct{}{}
-	IgnoreFolders = map[string]struct{}{}
+/*
+Init Watch Arguments
+*/
+func InitWatcherArgs() {
+
 	adt.SetAppend(WatchFiles, config.UserToml.WatchFiles)
 	adt.SetAppend(IgnoreFolders, config.UserToml.IgnoreFolders)
 
@@ -38,6 +40,8 @@ func ProcessWatchEnvironment() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	// filter ignore folders
 	watchFolder := []string{}
 	for _, folder := range Folders() {
 		if _, ok := IgnoreFolders[folder]; ok {
@@ -50,18 +54,37 @@ func ProcessWatchEnvironment() {
 		}
 	}
 
-	format.BlockMessage("watch folder", watchFolder)
-
 	if len(config.UserToml.WatchFiles) == 1 && config.UserToml.WatchFiles[0] == "*" {
 		EventHandle = EventHandleAll
 	} else {
 		EventHandle = EventHandleWithFileExtension
 	}
 
-	format.NoteMessage("Ignores", strings.Join(config.UserToml.IgnoreFolders, ","))
-	format.InfoMessage("File Type", strings.Join(config.UserToml.WatchFiles, ","))
-	format.NoteMessage("Execute Command", config.UserToml.ExecuteCommand)
-	format.InfoMessage("Delay", strconv.Itoa(config.UserToml.Delay))
-	format.InfoMessage("ShowEvent", strconv.FormatBool(config.UserToml.ShowEvent))
+	/*
+		Display configuration information
+	*/
+	format.BlockMessage("watch folder", watchFolder)
+	// format.NoteMessage("Ignores", strings.Join(config.UserToml.IgnoreFolders, ","))
+	// format.InfoMessage("File Type", strings.Join(config.UserToml.WatchFiles, ","))
+	format.Info("Execute Command :" + config.UserToml.ExecuteCommand)
+	// format.InfoMessage("Delay", strconv.Itoa(config.UserToml.Delay))
+	// format.InfoMessage("ShowEvent", strconv.FormatBool(config.UserToml.ShowEvent))
 
+}
+
+/*
+return subdirectories of working directory
+*/
+func Folders() []string {
+	var folders []string
+	files, _ := os.ReadDir(fs.WorkingDirectory)
+	folders = append(folders, fs.WorkingDirectory)
+	for _, file := range files {
+		if file.IsDir() {
+			if _, ok = IgnoreFolders[file.Name()]; !ok {
+				folders = append(folders, fs.WorkingDirectory+string(os.PathSeparator)+file.Name())
+			}
+		}
+	}
+	return folders
 }

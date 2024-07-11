@@ -39,7 +39,7 @@ func echoServer(conn net.Conn) {
 			break
 		}
 		println("\033[H\033[2J")
-		format.InfoMessage("Execute times", strconv.Itoa(pc))
+		format.Info("Execute times" + strconv.Itoa(pc))
 		pc++
 		cmd := watcher.CreateCommand(config.UserToml.HookCommand)
 		if cmd == nil {
@@ -71,8 +71,7 @@ func UnixWatcheServer() {
 }
 func HookAction(c *cli.Context) error {
 	config.LoadToml()
-	watcher.ProcessWatchEnvironment()
-	//
+	watcher.InitWatcherArgs()
 	TempHookAction()
 	return nil
 }
@@ -95,10 +94,10 @@ func TempHookAction() {
 	err = watcher.Add(filepath.Join(os.TempDir(), "hotpot.sock"))
 	format.Must(err)
 	pc := 0
-	for _ = range watcher.Events {
+	for range watcher.Events {
 		println("\033[H\033[2J")
 		pc++
-		format.InfoMessage("Times :", strconv.Itoa(pc))
+		format.Info("Times : " + strconv.Itoa(pc))
 		system.ExecuteCommand(config.UserToml.HookCommand)
 	}
 	fmt.Println("exit temphook action")

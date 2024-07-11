@@ -44,7 +44,7 @@ func ExecAction(c *cli.Context) error {
 
 		}
 	}
-	watcher.ProcessWatchEnvironment()
+	watcher.InitWatcherArgs()
 	watcher.StartWatch()
 	return nil
 }

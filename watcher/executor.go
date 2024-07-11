@@ -3,8 +3,6 @@ package watcher
 import (
 	"log"
 	"os"
-	"os/exec"
-	"runtime"
 	"strconv"
 	"time"
 
@@ -14,18 +12,17 @@ import (
 )
 
 var (
-	Stop  func() error
 	Start func() error
 	Count = 0
 )
 
-func CreateCommand(command string) *exec.Cmd {
-	return exec.Command("bash", "-c", command)
-
+func Stop() error {
+	return cmd.Process.Kill()
 }
+
 func StartBindHook() error {
 	Count++
-	format.InfoMessage("Execute times", strconv.Itoa(Count))
+	format.Info("Execute times" + strconv.Itoa(Count))
 	for _, command := range config.UserToml.PrepareCommand {
 		RunCommand(command)
 	}
@@ -43,7 +40,7 @@ func StartBindHook() error {
 }
 func StartWithHook() error {
 	Count++
-	format.InfoMessage("Execute times", strconv.Itoa(Count))
+	format.Info("Execute times" + strconv.Itoa(Count))
 	for _, command := range config.UserToml.PrepareCommand {
 		RunCommand(command)
 	}
@@ -82,25 +79,7 @@ func StopHookCommand() {
 	}
 }
 
-func taskkill() error {
-
-	RunCommand("taskkill /F /T /PID " + strconv.Itoa(cmd.Process.Pid))
-	return cmd.Process.Signal(os.Interrupt)
-
-}
-
-func kill() error {
-	RunCommand("kill " + strconv.Itoa(cmd.Process.Pid))
-	return cmd.Process.Signal(os.Interrupt)
-}
-
 func init() {
-	if runtime.GOOS == "windows" {
-		Stop = taskkill
-	} else {
-		Stop = kill
-	}
-
 	if config.HookEnable {
 		Start = StartBindHook
 

@@ -16,7 +16,7 @@ var (
 )
 
 func DebugAction(c *cli.Context) error {
-	watcher.ProcessWatchEnvironment()
+	watcher.InitWatcherArgs()
 	config.UserToml.ExecuteCommand = ""
 	config.UserToml.ShowEvent = true
 	watcher.StartWatch()

@@ -17,7 +17,7 @@ var (
 
 func WatchAction(c *cli.Context) error {
 	config.LoadToml()
-	watcher.ProcessWatchEnvironment()
+	watcher.InitWatcherArgs()
 	watcher.StartWatch()
 	return nil
 }

@@ -1,5 +1,5 @@
-github.com/KM911/fish v0.0.0-20240625082326-31bdc85734d8 h1:Prdbbr8Y2Ha0t52t9F6Dx5ylNK51EkWAhAmH9TSoY0U=
-github.com/KM911/fish v0.0.0-20240625082326-31bdc85734d8/go.mod h1:WsNYWNq7e2qsoLVo7kDVE4fnWRRjWnI2iD0rsCFSJwg=
+github.com/KM911/fish v0.0.2 h1:dMvY3q9vtUa2LXV7dUlcBCiAs/iamB5XRZWdPqoiTjI=
+github.com/KM911/fish v0.0.2/go.mod h1:FRQdGIV4uPD8zMIEVBNjSP5eSlU6maZCxmYf2C0IRqM=
 github.com/RoaringBitmap/roaring/v2 v2.2.2 h1:Y9eLWVsCqzIi90jZHCLcHfl4dW3eaIJOPnYpxt9W5mo=
 github.com/RoaringBitmap/roaring/v2 v2.2.2/go.mod h1:qhgqItwt5rQY0Nj4zw9nMhXv4Pkq2D8dA8RPJAfyU08=
 github.com/bits-and-blooms/bitset v1.12.0 h1:U/q1fAF7xXRhFCrhROzIfffYnu+dlS38vCZtmFVPHmA=

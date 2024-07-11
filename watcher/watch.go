@@ -17,17 +17,19 @@ func StartWatch() {
 	} else {
 		SocketPing = SocketPingEmpty
 	}
+
+	// first time start
 	Start()
 	for {
 		select {
 		case event = <-watcher.Events:
 			if config.UserToml.ShowEvent {
-				format.InfoMessage(event.Op.String(), event.Name)
+				format.Info(event.Op.String() + event.Name)
 			}
 			if strings.Contains(event.Name, config.TomlFile) {
 				format.Info("Reload Config File")
 				config.LoadToml()
-				ProcessWatchEnvironment()
+				InitWatcherArgs()
 			} else {
 				Debounce(func() {
 					EventHandle(event)
