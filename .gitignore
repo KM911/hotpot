@@ -18,7 +18,7 @@
 *.jpeg
 *.gif
 *.webp
-!image/README/*.*
+!docs/image/README/*.*
 
 node_modules
 dist

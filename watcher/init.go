@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"strings"
 	"time"
 
 	"github.com/KM911/fish/adt"
@@ -43,7 +44,7 @@ func InitWatcherArgs() {
 
 	// filter ignore folders
 	watchFolder := []string{}
-	for _, folder := range Folders() {
+	for _, folder := range ListAllDir() {
 		if _, ok := IgnoreFolders[folder]; ok {
 			continue
 		}
@@ -87,4 +88,16 @@ func Folders() []string {
 		}
 	}
 	return folders
+}
+
+func ListAllDir() []string {
+	find := exec.Cmd{
+		Path: "/usr/bin/fd",
+		Args: []string{"", "-t", "d"},
+	}
+	out, err := find.Output()
+	if err != nil {
+		return nil
+	}
+	return strings.Split(strings.TrimSpace(string(out)), "\n")
 }

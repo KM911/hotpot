@@ -3,7 +3,7 @@ module github.com/KM911/hotpot
 go 1.22.3
 
 require (
-	github.com/KM911/fish v0.0.2
+	github.com/KM911/fish v0.0.3
 	github.com/fsnotify/fsnotify v1.7.0
 	github.com/pelletier/go-toml/v2 v2.2.2
 	github.com/urfave/cli/v2 v2.27.2

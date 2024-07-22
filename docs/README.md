@@ -8,9 +8,9 @@ Watch file change and execute command.
 
 ### Restart Web Server
 
-hotpot could help you write web server or run test code. 
+hotpot could help you write web server or run test code.
 
-![1720874673106](image/README_zh-CN/1720874673106.png)
+![demo](image/README/server.gif)
 
 ## Install
 

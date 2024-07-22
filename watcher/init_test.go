@@ -3,8 +3,6 @@ package watcher
 import (
 	"fmt"
 	"testing"
-
-	"github.com/KM911/fish/fs"
 )
 
 func TestFolder(t *testing.T) {
@@ -15,8 +13,12 @@ func TestFolder(t *testing.T) {
 }
 
 func TestDir(t *testing.T) {
-	_, folder := fs.Dir(fs.HomeDirectory)
-	for i, v := range folder {
-		fmt.Println(i, v)
+	// _, folder := fs.Dir(fs.HomeDirectory)
+	// for i, v := range folder {
+	// 	fmt.Println(i, v)
+	// }
+	foler := ListAllDir()
+	for i := range foler {
+		fmt.Println(foler[i])
 	}
 }
